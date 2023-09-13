@@ -1,3 +1,7 @@
+*
+!README.md
+!.gitignore
+
 ### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/
