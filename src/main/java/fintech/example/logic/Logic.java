@@ -7,27 +7,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Logic {
-    private final int temperatureSpread = 50;
-    private final HashMap<UUID, String> regions = new HashMap<>();
-    private final ArrayList<Weather> weathers = new ArrayList<>();
+    private static final int temperatureSpread = 50;
 
-    public Logic(){
-        regions.put(UUID.randomUUID(), "Novosibirsk");
-        regions.put(UUID.randomUUID(), "Saint-Petersburg");
-        regions.put(UUID.randomUUID(), "Moscow");
-        regions.put(UUID.randomUUID(), "Kemerovo");
-        regions.put(UUID.randomUUID(), "Berdsk");
-        regions.put(UUID.randomUUID(), "Pashino");
-        regions.put(UUID.randomUUID(), "Iskitim");
-        regions.put(UUID.randomUUID(), "Barabinsk");
-        regions.put(UUID.randomUUID(), "Karasuk");
-        regions.put(UUID.randomUUID(), "Irkutsk");
-
-        generateWeatherList();
-    }
-
-    private void generateWeatherList() {
+    public static List<Weather>  generateWeatherList(Map<UUID, String> regions) {
         Random random = new Random();
+        var weathers = new ArrayList<Weather>();
 
         for(int i = 0; i < 3; i++) {
             for (var item : regions.entrySet()) {
@@ -39,20 +23,18 @@ public class Logic {
                         .build());
             }
         }
-    }
 
-    public ArrayList<Weather> getWeathersList(){
         return weathers;
     }
 
-    public Map<String, Double> calculateAverageTemperature(){
+    public static Map<String, Double> calculateAverageTemperature(List<Weather> weathers){
         return weathers.stream()
                 .collect(Collectors.groupingBy(Weather::getRegionName,
                         Collectors.averagingDouble(Weather::getTemperature)));
     }
 
-    public List<String> getRegionsWithHigherTemperature(Integer temperature) {
-        var average = calculateAverageTemperature();
+    public static List<String> getRegionsWithHigherTemperature(List<Weather> weathers, Integer temperature) {
+        var average = calculateAverageTemperature(weathers);
         return average.entrySet()
                 .stream()
                 .filter(x -> x.getValue() > temperature)
@@ -60,13 +42,13 @@ public class Logic {
                 .toList();
     }
 
-    public Map<UUID, List<Integer>> getRegionsTemperaturesMap() {
+    public static Map<UUID, List<Integer>> getRegionsTemperaturesMap(List<Weather> weathers) {
         return weathers.stream()
                 .collect(Collectors.groupingBy(Weather::getRegionId,
                         Collectors.mapping(Weather::getTemperature, Collectors.toList())));
     }
 
-    public Map<Integer, List<Weather>> getTemperatureWeatherMap() {
+    public static Map<Integer, List<Weather>> getTemperatureWeatherMap(List<Weather> weathers) {
         return weathers.stream()
                 .collect(Collectors.groupingBy(Weather::getTemperature));
     }
