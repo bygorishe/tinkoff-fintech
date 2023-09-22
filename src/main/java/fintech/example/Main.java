@@ -1,6 +1,6 @@
 package fintech.example;
 
-import fintech.example.logic.WeatherService;
+import fintech.example.services.WeatherService;
 
 import java.util.*;
 
