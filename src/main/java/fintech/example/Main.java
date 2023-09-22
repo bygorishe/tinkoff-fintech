@@ -1,7 +1,6 @@
 package fintech.example;
 
-import fintech.example.logic.Logic;
-import fintech.example.models.Weather;
+import fintech.example.logic.WeatherService;
 
 import java.util.*;
 
@@ -21,16 +20,16 @@ public class Main {
         regions.put(UUID.randomUUID(), "Irkutsk");
 
 
-        var weathers = Logic.generateWeatherList(regions);
+        var weathers = WeatherService.generateWeatherList(regions);
 
         System.out.println("Calculate the average temperature in the regions.");
-        System.out.println(Logic.calculateAverageTemperature(weathers));
+        System.out.println(WeatherService.calculateAverageTemperature(weathers));
 
         System.out.println();
         System.out.print("Create a function to search for regions greater than a certain temperature: ");
         Scanner in = new Scanner(System.in);
         int num = in.nextInt();
-        var acceptableRegions = Logic.getRegionsWithHigherTemperature(weathers, num);
+        var acceptableRegions = WeatherService.getRegionsWithHigherTemperature(weathers, num);
         if(acceptableRegions.isEmpty()) {
             System.out.println("No regions");
         }
@@ -41,13 +40,13 @@ public class Main {
         System.out.println();
         System.out.println("Convert the list to a Map, whose key is a unique identifier, " +
                 "the value is a list with temperature values.");
-        var map = Logic.getRegionsTemperaturesMap(weathers).entrySet();
+        var map = WeatherService.getRegionsTemperaturesMap(weathers).entrySet();
         map.forEach(x -> System.out.println(x.getKey() + " " + x.getValue()));
 
         System.out.println();
         System.out.println("Convert the list to a Map whose key is temperature, the value is a collection of " +
                 "Weather objects that correspond to the temperature specified in the key.");
-        var temperatureMap = Logic.getTemperatureWeatherMap(weathers).entrySet();
+        var temperatureMap = WeatherService.getTemperatureWeatherMap(weathers).entrySet();
         temperatureMap.forEach(x -> System.out.println(x.getKey() + " " + x.getValue()));
     }
 }

@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Logic {
+public class WeatherService {
     private static final int temperatureSpread = 50;
 
     public static List<Weather>  generateWeatherList(Map<UUID, String> regions) {
