@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class WeatherService {
-    private static final int temperatureSpread = 50;
+public final class WeatherService {
+    private static final int TEMPERATURE_SPREAD = 50;
 
     public static List<Weather>  generateWeatherList(Map<UUID, String> regions) {
         Random random = new Random();
@@ -18,8 +18,8 @@ public class WeatherService {
                 weathers.add(Weather.builder()
                         .regionId(item.getKey())
                         .regionName(item.getValue())
-                        .temperature(random.nextInt(-temperatureSpread, temperatureSpread))
-                        .datetime(LocalDateTime.now().minusDays(i))
+                        .temperature(random.nextInt(-TEMPERATURE_SPREAD, TEMPERATURE_SPREAD))
+                        .date(LocalDateTime.now().minusDays(i))
                         .build());
             }
         }

@@ -27,9 +27,9 @@ public class Main {
 
         System.out.println();
         System.out.print("Create a function to search for regions greater than a certain temperature: ");
-        Scanner in = new Scanner(System.in);
-        int num = in.nextInt();
-        var acceptableRegions = WeatherService.getRegionsWithHigherTemperature(weathers, num);
+        Scanner input = new Scanner(System.in);
+        int receivedTemperature= input.nextInt();
+        var acceptableRegions = WeatherService.getRegionsWithHigherTemperature(weathers, receivedTemperature);
         if(acceptableRegions.isEmpty()) {
             System.out.println("No regions");
         }

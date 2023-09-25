@@ -14,5 +14,5 @@ public class Weather {
     private UUID regionId;
     private String regionName;
     private Integer temperature;
-    private LocalDateTime datetime;
+    private LocalDateTime date;
 }
