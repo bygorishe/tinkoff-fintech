@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +16,9 @@ import java.util.List;
 @Tag(name = "WeatherController", description = "Weather API controller")
 @RestController
 @RequestMapping("api/v1/weather")
+@RequiredArgsConstructor
 public class WeatherController {
     private final WeatherService weatherService;
-
-    public WeatherController(WeatherService weatherService) {
-
-        this.weatherService = weatherService;
-    }
 
     @Operation(summary = "Get all available weather records")
     @GetMapping("get-all")
