@@ -1,6 +1,6 @@
-package com.example.fintech_spring.models;
+package com.fintech_spring.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.UUID;
 
 import lombok.*;
@@ -11,8 +11,9 @@ import lombok.*;
 @ToString(includeFieldNames=true)
 public class Weather {
     @Setter(AccessLevel.PRIVATE)
-    private UUID regionId;
+    private UUID id;
+    private UUID regionId; //TODO переделать на REgion
     private String regionName;
     private Integer temperature;
-    private LocalDateTime date;
+    private LocalDate date;
 }

@@ -1,4 +1,4 @@
-package fintech.example.models;
+package fintech.models;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
