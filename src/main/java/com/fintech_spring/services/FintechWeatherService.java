@@ -48,7 +48,7 @@ public class FintechWeatherService implements WeatherService{
     }
 
     @Override
-    public void createWeather(String regionName, LocalDate date, Integer temperature) {
+    public void createWeather(String regionName, LocalDate date, Double temperature) {
         if (regionRepository.exists(regionName)) {
             throw new CityAlreadyExistsException(regionName);
         }
@@ -71,7 +71,7 @@ public class FintechWeatherService implements WeatherService{
     }
 
     @Override
-    public void updateWeather(String regionName, LocalDate date, Integer temperature){
+    public void updateWeather(String regionName, LocalDate date, Double temperature){
         if(!regionRepository.exists(regionName)) {
             throw new CityNotFoundException(regionName);
         }

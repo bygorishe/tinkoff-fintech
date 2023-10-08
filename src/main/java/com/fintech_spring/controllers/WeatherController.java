@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Tag(name = "WeatherController", description = "Weather API controller")
+@Tag(name = "WeatherController", description = "Weather controller")
 @RestController
 @RequestMapping("api/v1/weather")
 @RequiredArgsConstructor
@@ -44,7 +44,7 @@ public class WeatherController {
     @PostMapping(value = "/{city}")
     public void createWeather(@RequestParam(name = "City name") @PathVariable String city,
                               @RequestBody LocalDate date,
-                              @RequestBody Integer temperature) {
+                              @RequestBody Double temperature) {
         weatherService.createWeather(city, date, temperature);
     }
 
@@ -52,7 +52,7 @@ public class WeatherController {
     @PutMapping(value = "/{city}")
     public void updateWeather(@RequestParam(name = "City name") @PathVariable String city,
                               @RequestBody LocalDate date,
-                              @RequestBody Integer temperature) {
+                              @RequestBody Double temperature) {
         weatherService.updateWeather(city, date, temperature);
     }
 

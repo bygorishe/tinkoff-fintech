@@ -10,8 +10,8 @@ public interface WeatherService {
     public List<Weather> getAllWeather();
     public List<Region> getAllRegions();
     public Weather getRegionWeather(String region, LocalDate date);
-    public void createWeather(String region, LocalDate date, Integer temperature);
-    public void updateWeather(String region, LocalDate date, Integer temperature);
+    public void createWeather(String region, LocalDate date, Double temperature);
+    public void updateWeather(String region, LocalDate date, Double temperature);
     public void deleteWeather(String region, LocalDate date);
     public void deleteCity(String region);
 }
