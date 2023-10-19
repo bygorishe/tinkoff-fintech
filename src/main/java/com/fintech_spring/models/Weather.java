@@ -14,6 +14,6 @@ public class Weather {
     private UUID id;
     private UUID regionId; //TODO переделать на REgion
     private String regionName;
-    private Integer temperature;
+    private Double temperature;
     private LocalDate date;
 }
