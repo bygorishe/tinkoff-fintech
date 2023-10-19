@@ -1,6 +1,6 @@
-package fintech.example.services;
+package fintech.services;
 
-import fintech.example.models.Weather;
+import fintech.models.Weather;
 
 import java.time.LocalDateTime;
 import java.util.*;
